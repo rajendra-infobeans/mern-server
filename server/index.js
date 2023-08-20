@@ -5,6 +5,7 @@ import mongoose from 'mongoose';
 
 // Importing routes:
 import studentRoutes from './routes/student.js';
+import registerRouter from './routes/register.js';
 
 // Creating express application
 const app = express();
@@ -17,8 +18,12 @@ app.use(bodyParser.urlencoded({limit:'20mb', extended:true}));
 // Allow incoming request from different origin
 app.use(cors());
 
+// For register routes
+app.use('/register', registerRouter);
+
 // For student middleware routes.
 app.use('/students', studentRoutes);
+
 
 //app.options('*', cors()); //put this before your route 
 
